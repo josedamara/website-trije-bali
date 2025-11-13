@@ -24,9 +24,7 @@ import { useState, type JSX } from 'react'
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 function App() {
-    const deviceWidth = window.innerWidth;
     const isMobile = useMediaQuery("(max-width: 639px)");
-    const mountainHeight = deviceWidth * 0.07
 
     const [menuDisplay, setMenuDisplay] = useState("none");
 
@@ -40,28 +38,6 @@ function App() {
         setMenuDisplay("none");
         document.body.style.overflow = "";
         document.documentElement.style.overflow = "";
-    }
-
-    function mountainSeparatorConstructor(): string {
-        const firstXAxis = 0;
-        const secondXAxis = deviceWidth * 0.42
-        const thirdXAxis = deviceWidth - secondXAxis
-        const fourthXAxis = deviceWidth
-
-        const firstYAxis = mountainHeight
-        const secondYAxis = 0
-
-        const firstPosition = "M" + firstXAxis + "," + firstYAxis
-        const firstLine = "L" + deviceWidth * 0.42 + ",0"
-
-        const curveFirstPart = secondXAxis + "," + (secondYAxis + deviceWidth * 0.007)
-        const curveSecondPart = thirdXAxis + "," + (secondYAxis + deviceWidth * 0.007)
-        const curveThirdPart = thirdXAxis + "," + secondYAxis
-        const curve = "C" + curveFirstPart + " " + curveSecondPart + " " + curveThirdPart
-
-        const secondLine = "L" + fourthXAxis + "," + firstYAxis
-
-        return firstPosition + firstLine + curve + secondLine + " Z";
     }
 
     const laptopContent: JSX.Element = (<div id="home" className='m-0 p-0 w-full'>
